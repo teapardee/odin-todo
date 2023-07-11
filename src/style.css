@@ -1,0 +1,34 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  --primary-color: #4988ac;
+  --secondary-color: grey;
+  --darkfont: #626262;
+  --lightblue: rgba(215, 236, 248, 0.5);
+  color: var(--secondary-color);
+}
+
+input,
+button,
+li {
+  all: unset;
+  display: flex;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  height: 10vh;
+  background-color: black;
+}
+
+.logo {
+  font-size: 2rem;
+  color: white;
+  margin-left: 20px;
+  letter-spacing: 5px;
+}

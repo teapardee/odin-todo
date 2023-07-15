@@ -43,6 +43,7 @@ header {
   height: auto;
   max-width: 100%;
   border: 1px solid rgba(211, 211, 211, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .project:hover {
@@ -65,7 +66,7 @@ p {
   font-weight: 100;
 }
 
-.task-container {
+.task {
   display: grid;
   align-items: center;
   grid-template: auto 1fr / auto auto 8fr 1fr;
@@ -73,7 +74,7 @@ p {
   padding: 10px;
 }
 
-.task-container:nth-child(even) {
+.task:nth-child(even) {
   background-color: rgba(211, 211, 211, 0.15);
 }
 
@@ -84,7 +85,12 @@ p {
   cursor: pointer;
 }
 
+.expand:hover {
+  color: grey;
+}
+
 .task-details {
+  display: none;
   grid-area: 2 / 3 / 3 / 4;
   align-items: center;
   grid-template: repeat(3, auto) / auto 1fr;
@@ -104,18 +110,9 @@ h2 {
   margin: 5px;
 }
 
-.hide {
-  display: none;
-}
-
 .show {
   display: grid;
 }
-
-/* .task:hover {
-  background-color: black;
-  color: white;
-} */
 
 .priority {
   width: 17px;
@@ -127,16 +124,18 @@ h2 {
 }
 
 .green {
-  background-color: rgb(132, 204, 22, 0.5);
-  border-color: rgb(132, 204, 22, 1);
+  background-color: rgba(132, 204, 22, 0.5);
+  border-color: rgba(132, 204, 22, 1);
 }
 
 .orange {
-  background-color: #f97316;
+  background-color: rgba(249, 116, 22, 0.5);
+  border-color: rgba(249, 116, 22, 1);
 }
 
 .red {
-  background-color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.5);
+  border-color: rgba(239, 68, 68, 1);
 }
 
 /* Checkmark */

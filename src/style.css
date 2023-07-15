@@ -10,6 +10,7 @@
 
 input,
 button,
+h2,
 li {
   all: unset;
   display: flex;
@@ -61,17 +62,18 @@ p {
   align-items: center;
   padding-left: 10px;
   font-size: 1.5rem;
+  font-weight: 100;
 }
 
-.task {
+.task-container {
   display: grid;
   align-items: center;
-  grid-template: auto / auto auto 8fr 1fr;
+  grid-template: auto 1fr / auto auto 8fr 1fr;
   font-size: 1.5rem;
   padding: 10px;
 }
 
-.task:nth-child(even) {
+.task-container:nth-child(even) {
   background-color: rgba(211, 211, 211, 0.15);
 }
 
@@ -79,6 +81,35 @@ p {
   display: flex;
   justify-content: end;
   font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.task-details {
+  grid-area: 2 / 3 / 3 / 4;
+  align-items: center;
+  grid-template: repeat(3, auto) / auto 1fr;
+  margin: 10px 10px 0px 10px;
+  font-size: 1.25rem;
+}
+
+.task-details p {
+  font-weight: 100;
+  margin: 5px;
+}
+
+h2 {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: grid;
 }
 
 /* .task:hover {

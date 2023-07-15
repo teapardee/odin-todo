@@ -66,7 +66,7 @@ p {
 .task {
   display: grid;
   align-items: center;
-  grid-template: auto / 8fr 1fr;
+  grid-template: auto / auto auto 8fr 1fr;
   font-size: 1.5rem;
   padding: 10px;
 }
@@ -75,32 +75,56 @@ p {
   background-color: rgba(211, 211, 211, 0.15);
 }
 
-.task > p:last-child {
+.expand {
+  display: flex;
   justify-content: end;
+  font-size: 1.25rem;
 }
 
-.task:hover {
+/* .task:hover {
   background-color: black;
   color: white;
+} */
+
+.priority {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  margin-left: 10px;
+  cursor: pointer;
+  border: 2px solid;
 }
 
-.box {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' -25, 'opsz' 48;
-  color: #008000;
+.green {
+  background-color: rgb(132, 204, 22, 0.5);
+  border-color: rgb(132, 204, 22, 1);
+}
+
+.orange {
+  background-color: #f97316;
+}
+
+.red {
+  background-color: #ef4444;
 }
 
 /* Checkmark */
 
-.checkbox-wrapper-43 input[type='checkbox'] {
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-wrapper input[type='checkbox'] {
   display: none;
   visibility: hidden;
 }
 
-.checkbox-wrapper-43 label {
+.checkbox-wrapper label {
   display: inline-block;
 }
 
-.checkbox-wrapper-43 .check {
+.checkbox-wrapper .check {
   cursor: pointer;
   position: relative;
   margin: auto;
@@ -109,7 +133,7 @@ p {
   -webkit-tap-highlight-color: transparent;
   transform: translate3d(0, 0, 0);
 }
-.checkbox-wrapper-43 .check:before {
+.checkbox-wrapper .check:before {
   content: '';
   position: absolute;
   top: -15px;
@@ -121,7 +145,7 @@ p {
   opacity: 0;
   transition: opacity 0.2s ease;
 }
-.checkbox-wrapper-43 .check svg {
+.checkbox-wrapper .check svg {
   position: relative;
   z-index: 1;
   fill: none;
@@ -132,28 +156,28 @@ p {
   transform: translate3d(0, 0, 0);
   transition: all 0.2s ease;
 }
-.checkbox-wrapper-43 .check svg path {
+.checkbox-wrapper .check svg path {
   stroke-dasharray: 60;
   stroke-dashoffset: 0;
 }
-.checkbox-wrapper-43 .check svg polyline {
+.checkbox-wrapper .check svg polyline {
   stroke-dasharray: 22;
   stroke-dashoffset: 66;
 }
-.checkbox-wrapper-43 .check:hover:before {
+.checkbox-wrapper .check:hover:before {
   opacity: 1;
 }
-.checkbox-wrapper-43 .check:hover svg {
+.checkbox-wrapper .check:hover svg {
   stroke: rgb(33, 134, 33);
 }
-.checkbox-wrapper-43 input[type='checkbox']:checked + .check svg {
+.checkbox-wrapper input[type='checkbox']:checked + .check svg {
   stroke: rgb(33, 134, 33);
 }
-.checkbox-wrapper-43 input[type='checkbox']:checked + .check svg path {
+.checkbox-wrapper input[type='checkbox']:checked + .check svg path {
   stroke-dashoffset: 60;
   transition: all 0.3s linear;
 }
-.checkbox-wrapper-43 input[type='checkbox']:checked + .check svg polyline {
+.checkbox-wrapper input[type='checkbox']:checked + .check svg polyline {
   stroke-dashoffset: 42;
   transition: all 0.2s linear;
   transition-delay: 0.15s;

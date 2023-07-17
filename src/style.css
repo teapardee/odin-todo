@@ -72,6 +72,19 @@ p {
   padding: 10px;
 }
 
+.add-task {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  padding: 10px;
+  cursor: pointer;
+  color: grey;
+}
+
+.add-task:hover {
+  color: rgb(105, 163, 18);
+}
+
 .task:nth-child(even) {
   background-color: rgba(211, 211, 211, 0.15);
 }
@@ -146,7 +159,7 @@ h2 {
   cursor: pointer;
 }
 
-/* Modal */
+/* Edit Task Modal */
 
 .modal {
   display: none;

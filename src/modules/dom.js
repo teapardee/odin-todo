@@ -12,6 +12,11 @@ function addEditListeners() {
   });
   const closeBtn = document.querySelector('.close-btn');
   closeBtn.addEventListener('click', toggleModal);
+
+  const addTask = document.querySelector('.add-task');
+  addTask.addEventListener('click', () => {
+    toggleModal('add');
+  });
 }
 
 function toggleDetails(btn) {
@@ -23,13 +28,21 @@ function toggleDetails(btn) {
   }
 }
 
-function toggleModal() {
+function toggleModal(task) {
   const modal = document.querySelector('.modal');
   const btn = document.querySelector('.submit-btn');
-  const closeBtn = document.getElementById('form-header');
+  const formHeader = document.getElementById('form-header');
+
+  if (task === 'add') {
+    console.log(task);
+    btn.innerHTML = 'ADD';
+    formHeader.innerHTML = 'ADD TASK';
+  } else {
+    btn.innerHTML = 'APPLY';
+    formHeader.innerHTML = 'EDIT TASK';
+  }
+
   modal.classList.toggle('show-flex');
-  btn.innerHTML = 'APPLY';
-  closeBtn.innerHTML = 'EDIT TASK';
 }
 
 export { addExpandListeners, addEditListeners };

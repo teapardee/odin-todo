@@ -8,12 +8,10 @@
   --primary-color: black;
 }
 
-input,
 button,
 h2,
 li {
   all: unset;
-  display: flex;
 }
 
 header {
@@ -91,10 +89,10 @@ p {
 
 .task-details {
   display: none;
-  grid-area: 2 / 3 / 3 / 4;
+  grid-area: 2 / 3 / 3 / 5;
   align-items: center;
   grid-template: repeat(3, auto) / auto 1fr;
-  margin: 10px 10px 0px 10px;
+  margin: 10px 0px 0px 10px;
   font-size: 1.25rem;
 }
 
@@ -103,14 +101,16 @@ p {
   margin: 5px;
 }
 
+span,
 h2 {
   display: flex;
   justify-content: flex-end;
   font-weight: bold;
   margin: 5px;
+  font-size: 1.25rem;
 }
 
-.show {
+.show-grid {
   display: grid;
 }
 
@@ -136,6 +136,129 @@ h2 {
 .red {
   background-color: rgba(239, 68, 68, 0.5);
   border-color: rgba(239, 68, 68, 1);
+}
+
+.edit {
+  height: 25px;
+  width: 25px;
+  grid-area: 5 / 2 / 6 / 3;
+  justify-self: flex-end;
+  cursor: pointer;
+}
+
+/* Modal */
+
+.modal {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.show-flex {
+  display: flex;
+}
+
+#form {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(auto-fit, 1fr);
+  flex-direction: column;
+  min-width: 20vw;
+  min-height: 20vw;
+  border: 1px solid rgba(211, 211, 211, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 20px;
+  background-color: white;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  padding: 5px;
+  float: right;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#form-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#form > input,
+textarea {
+  margin: 5px 0 5px 0;
+  min-height: 3rem;
+  padding: 10px;
+  font-size: 1.25rem;
+}
+
+input {
+  font-weight: 100;
+  margin: 5px;
+  font-size: 1.25rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: auto;
+  outline-color: rgb(0, 148, 189);
+}
+
+.input-field {
+  display: flex;
+  align-self: center;
+  justify-self: flex-start;
+  font-weight: bold;
+  margin: 5px 0 5px 0;
+}
+
+textarea:placeholder-shown,
+input:placeholder-shown {
+  padding: 10px;
+
+  font-size: 1.25rem;
+}
+
+input:last-of-type {
+  display: flex;
+  justify-content: flex-start;
+  height: 1.5rem;
+}
+
+.btn-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.submit-btn,
+.reset-btn {
+  min-height: 3rem;
+  margin: 15px 5px 5px 5px;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px black solid;
+}
+
+.submit-btn:hover {
+  background-color: rgba(0, 128, 0, 0.2);
+}
+
+.reset-btn:hover {
+  background-color: rgba(255, 0, 0, 0.2);
 }
 
 /* Checkmark */

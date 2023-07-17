@@ -1,8 +1,9 @@
 import './style.css';
 import Project from './modules/project.js';
-import addListeners from './modules/dom.js';
+import { addExpandListeners, addEditListeners } from './modules/dom.js';
 
-addListeners();
+addExpandListeners();
+addEditListeners();
 
 const Test = new Project('ProjectTest1');
 

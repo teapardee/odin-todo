@@ -21,7 +21,7 @@
         </div>
         <input
           type="text"
-          id="task-title"
+          id="form-title"
           name="task-title"
           placeholder="Task Title"
         />
@@ -61,31 +61,33 @@
     <div class="grid">
       <div class="project">
         <h1>PROJECT 1</h1>
-        <div class="task">
-          <div class="checkbox-wrapper">
-            <input type="checkbox" id="cbx-43" />
-            <label for="cbx-43" class="check">
-              <svg width="18px" height="18px" viewBox="0 0 18 18">
-                <path
-                  d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"
-                ></path>
-                <polyline points="1 9 7 14 15 4"></polyline>
-              </svg>
-            </label>
-          </div>
-          <div class="priority green"></div>
-          <p>Task 1</p>
-          <div class="expand">▼</div>
-          <div class="task-details hide">
-            <h2>DESCRIPTION:</h2>
-            <p>This is the task description</p>
-            <h2>PRIORITY:</h2>
-            <p>Low</p>
-            <h2>DATE ADDED:</h2>
-            <p>12/31/25</p>
-            <h2>DATE COMPLETED:</h2>
-            <p>12/31/25</p>
-            <img class="edit" alt="edit.svg" src="./edit.svg" />
+        <div id="task-container">
+          <div class="task">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="cbx-43" />
+              <label for="cbx-43" class="check">
+                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                  <path
+                    d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"
+                  ></path>
+                  <polyline points="1 9 7 14 15 4"></polyline>
+                </svg>
+              </label>
+            </div>
+            <div class="priority green"></div>
+            <p>Task 1</p>
+            <div class="expand">▼</div>
+            <div class="task-details hide">
+              <h2>DESCRIPTION:</h2>
+              <p>This is the task description</p>
+              <h2>PRIORITY:</h2>
+              <p>Low</p>
+              <h2>DATE ADDED:</h2>
+              <p>12/31/25</p>
+              <h2>DATE COMPLETED:</h2>
+              <p>12/31/25</p>
+              <img class="edit" alt="edit.svg" src="./edit.svg" />
+            </div>
           </div>
         </div>
         <div class="add-task">Add Task +</div>

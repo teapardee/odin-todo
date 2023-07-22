@@ -4,11 +4,11 @@ export default class Project {
     this._projectTasks = [];
   }
 
-  get title() {
+  get projectTitle() {
     return this._title;
   }
 
-  set title(value) {
+  set projectTitle(value) {
     this._title = value;
   }
 

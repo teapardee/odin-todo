@@ -4,19 +4,19 @@ export default class Project {
     this._projectTasks = [];
   }
 
-  get projectTitle() {
+  get title() {
     return this._title;
   }
 
-  set projectTitle(value) {
-    this._title = value;
-  }
-
-  get projectTasks() {
+  get tasks() {
     return this._projectTasks;
   }
 
-  set projectTasks(value) {
+  set tasks(value) {
     this._projectTasks.push(value);
+  }
+
+  get length() {
+    return this._projectTasks.length;
   }
 }

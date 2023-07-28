@@ -12,10 +12,10 @@
     <header>
       <div class="logo">CHECKMARK</div>
     </header>
-    <div class="modal">
+    <div id="task-modal" class="modal">
       <form action="#" id="form">
         <span id="form-header">EDIT TASK</span>
-        <button class="close-btn">x</button>
+        <button id="close-task" class="close-btn">x</button>
         <div class="input-field">
           <label for="title"><span>TASK NAME</span></label>
         </div>
@@ -54,13 +54,37 @@
         <input type="date" id="form-completed" name="completed" />
         <div class="btn-container">
           <button type="reset" class="reset-btn">RESET</button>
-          <button type="submit" class="submit-btn"></button>
+          <button type="submit" id="task-submit" class="submit-btn"></button>
         </div>
       </form>
     </div>
-    <div class="grid">
+    <div id="project-modal" class="modal">
+      <form action="#" id="form">
+        <span id="form-header">ADD PROJECT</span>
+        <button id="close-proj" class="close-btn">x</button>
+        <div class="input-field">
+          <label for="title"><span>PROJECT NAME</span></label>
+        </div>
+        <input
+          type="text"
+          id="form-project"
+          name="project-title"
+          placeholder="Project Title"
+        />
+        <div class="btn-container">
+          <button type="reset" class="reset-btn">RESET</button>
+          <button type="submit" id="project-submit" class="submit-btn">
+            ADD
+          </button>
+        </div>
+      </form>
+    </div>
+    <div id="project-container" class="grid">
       <div class="project">
-        <h1>PROJECT 1</h1>
+        <div class="title-container">
+          <h1>PROJECT 1</h1>
+          <img id="edit-project" class="edit" alt="edit.svg" src="./edit.svg" />
+        </div>
         <div id="task-container">
           <div class="task">
             <div class="checkbox-wrapper">
@@ -86,7 +110,12 @@
               <p>12/31/25</p>
               <h2>DATE COMPLETED:</h2>
               <p>12/31/25</p>
-              <img class="edit" alt="edit.svg" src="./edit.svg" />
+              <img
+                id="edit-task"
+                class="edit"
+                alt="edit.svg"
+                src="./edit.svg"
+              />
             </div>
           </div>
         </div>

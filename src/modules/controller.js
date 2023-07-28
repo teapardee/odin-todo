@@ -1,12 +1,38 @@
 import Task from './task';
+import Project from './project';
+import { storage } from './storage';
+import { renderProject, toggleModal } from './dom';
 
-export default class Controller {
-  static addTask() {
-    console.log('New');
-    // const title = document.getElementById('form-title');
-    // const description = document.getElementById('form-description');
-
-    // const newTask = new Task(title, description);
-    // console.log(newTask);
+var controller = (function () {
+  function addProject() {
+    const projectName = document.getElementById('form-project');
+    const newProject = new Project(projectName.value);
+    console.log(newProject);
+    storage.saveProject(newProject.title, newProject);
+    toggleModal('add', 'project');
   }
-}
+
+  function render() {
+    for (var i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      const value = JSON.parse(localStorage.getItem(key));
+      console.log(value._title);
+      renderProject(value._title);
+    }
+
+    const container = document.getElementById('project-container');
+    const addProj = document.createElement('div');
+    addProj.className = 'add-project';
+    addProj.innerHTML = 'Add Project +';
+
+    container.appendChild(addProj);
+    console.log(addProj);
+  }
+
+  return {
+    addProject,
+    render,
+  };
+})();
+
+export { controller };

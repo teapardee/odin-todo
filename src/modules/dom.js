@@ -1,4 +1,6 @@
-import Controller from './controller';
+import { controller } from './controller';
+import Project from './project';
+import Task from './task';
 
 function addExpandListeners() {
   const expands = document.querySelectorAll('.expand');
@@ -8,21 +10,48 @@ function addExpandListeners() {
 }
 
 function addEditListeners() {
-  const edits = document.querySelectorAll('.edit');
-  edits.forEach(function (btn) {
-    btn.addEventListener('click', toggleModal);
+  const editTask = document.querySelectorAll('#edit-task');
+  editTask.forEach(function (btn) {
+    btn.addEventListener('click', () => {
+      toggleModal('edit', 'task');
+    });
   });
-  const closeBtn = document.querySelector('.close-btn');
-  closeBtn.addEventListener('click', toggleModal);
+
+  const editProject = document.querySelectorAll('#edit-project');
+  editProject.forEach(function (btn) {
+    btn.addEventListener('click', () => {
+      toggleModal('edit', 'project');
+    });
+  });
+
+  const closeProject = document.querySelector('#close-proj');
+  closeProject.addEventListener('click', () => {
+    toggleModal('', 'project');
+  });
+
+  const closeTask = document.querySelector('#close-task');
+  closeTask.addEventListener('click', () => {
+    toggleModal('', 'task');
+  });
 
   const addTask = document.querySelector('.add-task');
   addTask.addEventListener('click', () => {
-    toggleModal('add');
+    toggleModal('add', 'task');
   });
 
-  const submitTask = document.querySelector('.submit-btn');
+  const addProject = document.querySelector('.add-project');
+  addProject.addEventListener('click', () => {
+    toggleModal('add', 'project');
+  });
+
+  const submitProject = document.getElementById('project-submit');
+  submitProject.addEventListener('click', () => {
+    controller.addProject();
+  });
+
+  const submitTask = document.getElementById('task-submit');
   submitTask.addEventListener('click', () => {
-    Controller.addTask();
+    controller.addProject();
   });
 }
 
@@ -35,8 +64,7 @@ function toggleDetails(btn) {
   }
 }
 
-function toggleModal(task) {
-  const modal = document.querySelector('.modal');
+function toggleModal(task, target) {
   const btn = document.querySelector('.submit-btn');
   const formHeader = document.getElementById('form-header');
 
@@ -48,11 +76,33 @@ function toggleModal(task) {
     formHeader.innerHTML = 'EDIT TASK';
   }
 
-  modal.classList.toggle('show-flex');
+  if (target === 'project') {
+    let modal = document.getElementById('project-modal');
+    modal.classList.toggle('show-flex');
+  } else {
+    let modal = document.getElementById('task-modal');
+    modal.classList.toggle('show-flex');
+  }
 }
 
-function renderTasks() {
-  console.log('test');
+function renderProject(projectName) {
+  const container = document.getElementById('project-container');
+  const project = document.createElement('div');
+  project.className = 'project';
+
+  const title = document.createElement('h1');
+  title.innerHTML = projectName;
+
+  const addTask = document.createElement('div');
+  addTask.className = 'add-task';
+  addTask.innerHTML = 'Add Task +';
+
+  project.appendChild(title);
+  project.appendChild(addTask);
+  container.appendChild(project);
+}
+
+function renderTask(_title) {
   const taskContainer = document.getElementById('task-container');
 
   const task = document.createElement('div');
@@ -73,7 +123,7 @@ function renderTasks() {
   const priority = document.createElement('div');
   priority.classList.add('priority', 'green');
   const title = document.createElement('p');
-  title.innerHTML = 'Task Test';
+  title.innerHTML = _title;
 
   const expand = document.createElement('div');
   expand.classList.add('expand');
@@ -99,4 +149,10 @@ function renderTasks() {
   taskContainer.appendChild(task);
 }
 
-export { addExpandListeners, addEditListeners, renderTasks };
+export {
+  addExpandListeners,
+  addEditListeners,
+  renderTask,
+  renderProject,
+  toggleModal,
+};

@@ -65,15 +65,15 @@ function toggleDetails(btn) {
 }
 
 function toggleModal(task, target) {
-  const btn = document.querySelector('.submit-btn');
-  const formHeader = document.getElementById('form-header');
+  const btn = document.getElementById(`${target}-submit`);
+  const formHeader = document.getElementById(`${target}-header`);
 
   if (task === 'add') {
     btn.innerHTML = 'ADD';
-    formHeader.innerHTML = 'ADD TASK';
+    formHeader.innerHTML = `ADD ${target.toUpperCase()}`;
   } else {
     btn.innerHTML = 'APPLY';
-    formHeader.innerHTML = 'EDIT TASK';
+    formHeader.innerHTML = `EDIT ${target.toUpperCase()}`;
   }
 
   if (target === 'project') {
@@ -87,6 +87,15 @@ function toggleModal(task, target) {
 
 function renderProject(projectName) {
   const container = document.getElementById('project-container');
+  const titleContainer = document.createElement('div');
+  titleContainer.className = 'title-container';
+
+  const editImg = document.createElement('img');
+  editImg.className = 'edit';
+  editImg.id = 'edit-project';
+  editImg.src = './edit.svg';
+  editImg.alt = 'edit.svg';
+
   const project = document.createElement('div');
   project.className = 'project';
 
@@ -97,7 +106,9 @@ function renderProject(projectName) {
   addTask.className = 'add-task';
   addTask.innerHTML = 'Add Task +';
 
-  project.appendChild(title);
+  project.appendChild(titleContainer);
+  titleContainer.appendChild(title);
+  titleContainer.appendChild(editImg);
   project.appendChild(addTask);
   container.appendChild(project);
 }

@@ -7,9 +7,13 @@ var controller = (function () {
   function addProject() {
     const projectName = document.getElementById('form-project');
     const newProject = new Project(projectName.value);
-    console.log(newProject);
     storage.saveProject(newProject.title, newProject);
     toggleModal('add', 'project');
+  }
+
+  function editProject(e) {
+    console.log(e);
+    const projectName = document.getElementById('form-project');
   }
 
   function render() {

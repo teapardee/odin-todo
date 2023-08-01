@@ -236,7 +236,8 @@ h2 {
   cursor: pointer;
 }
 
-#form-header {
+#project-header,
+#task-header {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -6,6 +6,8 @@ import {
   addEditListeners,
   renderTask,
   renderProject,
+  addSubmitListeners,
+  addInputListeners,
 } from './modules/dom.js';
 import { controller } from './modules/controller';
 import { storage } from './modules/storage';
@@ -13,3 +15,4 @@ import { storage } from './modules/storage';
 controller.render();
 addExpandListeners();
 addEditListeners();
+addInputListeners();

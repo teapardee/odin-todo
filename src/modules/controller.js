@@ -12,7 +12,7 @@ var controller = (function () {
   }
 
   function editProject(e) {
-    console.log(e);
+    alert('test');
     const projectName = document.getElementById('form-project');
   }
 
@@ -20,7 +20,6 @@ var controller = (function () {
     for (var i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       const value = JSON.parse(localStorage.getItem(key));
-      console.log(value._title);
       renderProject(value._title);
     }
 
@@ -30,12 +29,18 @@ var controller = (function () {
     addProj.innerHTML = 'Add Project +';
 
     container.appendChild(addProj);
-    console.log(addProj);
   }
+
+  function addTask() {}
+
+  function editTask() {}
 
   return {
     addProject,
+    editProject,
     render,
+    addTask,
+    editTask,
   };
 })();
 

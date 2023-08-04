@@ -13,7 +13,7 @@
       <div class="logo">CHECKMARK</div>
     </header>
     <div id="task-modal" class="modal">
-      <form action="#" id="form">
+      <form novalidate action="#" id="form">
         <span id="task-header">EDIT TASK</span>
         <button id="close-task" class="close-btn">x</button>
         <div class="input-field">
@@ -24,7 +24,9 @@
           id="form-title"
           name="task-title"
           placeholder="Task Title"
+          required
         />
+        <div class="error">PLEASE INPUT TITLE</div>
         <div class="input-field">
           <label for="desc"><span>DESCRIPTION</span></label>
         </div>

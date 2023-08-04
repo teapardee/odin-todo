@@ -2,11 +2,22 @@ import { controller } from './controller';
 import Project from './project';
 import Task from './task';
 
-function addExpandListeners() {
-  const expands = document.querySelectorAll('.expand');
-  expands.forEach(function (btn) {
-    btn.addEventListener('click', toggleDetails.bind(null, btn));
+function addInputListeners() {
+  const formTitle = document.getElementById('form-title');
+  const form = document.getElementById('form');
+
+  form.addEventListener('submit', (e) => {
+    if (formTitle.validity.valueMissing) {
+      showError();
+      e.preventDefault();
+    }
   });
+}
+
+function showError() {
+  console.log('test2');
+  const errorMsg = document.querySelector('.error');
+  errorMsg.classList.add('active');
 }
 
 function addEditListeners() {
@@ -43,16 +54,6 @@ function addEditListeners() {
   addProject.addEventListener('click', () => {
     toggleModal('add', 'project');
   });
-
-  const submitProject = document.getElementById('project-submit');
-  submitProject.addEventListener('click', () => {
-    controller.addProject();
-  });
-
-  const submitTask = document.getElementById('task-submit');
-  submitTask.addEventListener('click', () => {
-    controller.addProject();
-  });
 }
 
 function toggleDetails(btn) {
@@ -68,20 +69,73 @@ function toggleModal(task, target) {
   const btn = document.getElementById(`${target}-submit`);
   const formHeader = document.getElementById(`${target}-header`);
 
-  if (task === 'add') {
-    btn.innerHTML = 'ADD';
-    formHeader.innerHTML = `ADD ${target.toUpperCase()}`;
-  } else {
-    btn.innerHTML = 'APPLY';
-    formHeader.innerHTML = `EDIT ${target.toUpperCase()}`;
+  switch (true) {
+    case target === 'project':
+      let projModal = document.getElementById('project-modal');
+      projModal.classList.toggle('show-flex');
+      break;
+    case target === 'task':
+      let modal = document.getElementById('task-modal');
+      modal.classList.toggle('show-flex');
+      break;
   }
 
-  if (target === 'project') {
-    let modal = document.getElementById('project-modal');
-    modal.classList.toggle('show-flex');
-  } else {
-    let modal = document.getElementById('task-modal');
-    modal.classList.toggle('show-flex');
+  switch (true) {
+    case task === 'add':
+      btn.innerHTML = 'ADD';
+      formHeader.innerHTML = `ADD ${target.toUpperCase()}`;
+      break;
+    case task === 'edit':
+      btn.innerHTML = 'EDIT';
+      formHeader.innerHTML = `EDIT ${target.toUpperCase()}`;
+      break;
+  }
+
+  addSubmitListeners(task, target);
+}
+
+function addExpandListeners() {
+  const expands = document.querySelectorAll('.expand');
+  expands.forEach(function (btn) {
+    btn.addEventListener('click', toggleDetails.bind(null, btn));
+  });
+}
+
+function addSubmitListeners(task, target) {
+  let submitProject;
+  let submitTask;
+
+  switch (true) {
+    case target === 'project':
+      submitProject = document.getElementById('project-submit');
+      break;
+    case target === 'task':
+      submitTask = document.getElementById('task-submit');
+      break;
+  }
+
+  switch (true) {
+    case task === 'add' && target === 'project':
+      submitProject.addEventListener('click', () => {
+        controller.addProject();
+      });
+      break;
+    case task === 'add' && target === 'task':
+      submitTask.addEventListener('click', () => {
+        controller.addTask();
+      });
+      break;
+
+    case task === 'edit' && target === 'project':
+      submitProject.addEventListener('click', () => {
+        controller.editProject();
+      });
+      break;
+    case task === 'edit' && target === 'task':
+      submitTask.addEventListener('click', () => {
+        controller.editTask();
+      });
+      break;
   }
 }
 
@@ -163,7 +217,9 @@ function renderTask(_title) {
 export {
   addExpandListeners,
   addEditListeners,
+  addSubmitListeners,
   renderTask,
   renderProject,
   toggleModal,
+  addInputListeners,
 };
